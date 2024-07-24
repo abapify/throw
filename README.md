@@ -34,3 +34,6 @@ class zcl_your_class implementation.
   endmethod.
 endclass.
 ```
+
+# Dependencies
+- [assert](https://github.com/abapify/assert) is used in unit tests for throw
