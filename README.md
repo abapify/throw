@@ -9,7 +9,7 @@ throw( 'Something bad happened' )
 ```
 or even 
 ```abap
-message e001(zmy_message_class) with 'this` 'and' 'that'.
+message e001(zmy_message_class) with 'this` 'and' 'that' into data(lv_dummy).
 throw( ).
 ```
 
