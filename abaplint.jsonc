@@ -6,6 +6,10 @@
       {
         "url": "https://github.com/abapify/assert",
         "files": "/src/**/*.*"
+      },
+      {
+        "url": "https://github.com/abaplint/deps",
+        "files": "/src/**/*.*"
       }
     ],
     "syntax": {
