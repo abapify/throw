@@ -16,7 +16,7 @@ It will be delivered as the interface `ZIF_THROW` which you can implement in you
 
 In short here is the pattern how you can use it:
 ```abap
-class zcl_your_class defintion.
+class zcl_your_class definition.
   public section.
     interfaces zif_throw.    
   private section.
