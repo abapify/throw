@@ -27,7 +27,7 @@ class zcl_your_class definition.
     interfaces zif_throw.    
   private section.
     aliases throw for zif_throw~throw.
-    methods do_something.
+    methods do_something raising cx_static_check.
 endclass.
 class zcl_your_class implementation.
   method zif_throw~throw.
