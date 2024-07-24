@@ -7,8 +7,14 @@ we should be able to do something like:
 ```abap
 throw( 'Something bad happened' )
 ```
+or even 
+```abap
+message e001(zmy_message_class) with 'this` 'and' 'that'.
+throw( ).
+```
 
-adn it should raise us the static exception. That's it
+In both cases we expect a static exception should be raised with a text message from a given text or just inherited from a system message.
+That's it.
 
 ## Implementation
 
