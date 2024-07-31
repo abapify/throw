@@ -1,5 +1,5 @@
 *"* use this source file for your ABAP unit test classes
-class ltcl_throw definition final for testing inheriting from zcl_assert
+class ltcl_throw definition final for testing inheriting from zcl_assertable_unit
   duration short
   risk level harmless.
 
@@ -24,7 +24,7 @@ class ltcl_throw implementation.
   method cx_sy.
 
      try.
-        message s000(zfetch) into data(lv_dummy) with 'A' 'B' 'C' 'D'.
+        message s000(zthrow) into data(lv_dummy) with 'A' 'B' 'C' 'D'.
         throw( ).
      catch lcx_sy into data(lo_cx).
         assert( lo_cx->get_text(  ) )->eq( 'ABCD' ).
