@@ -16,13 +16,15 @@ class lcx_sy definition inheriting from cx_static_check.
         msgid type sy-msgid,
         msgno type sy-msgno.
         include type attrs_ts as _attrs.
-    types:
+      types:
       end of message_ts.
     data message type message_ts read-only.
+    data data type ref to data read-only.
     methods constructor
       importing
         previous       type ref to cx_root optional
-        value(message) type message_ts optional.
+        value(message) type message_ts optional
+        data           type any.
   private section.
 
 endclass.
@@ -48,6 +50,10 @@ class lcx_sy implementation.
       attr4 = 'MESSAGE-MSGV4'
     ).
 
+    create data me->data like data.
+    assign me->data->* to field-symbol(<data>).
+    <data> = data.
+
   endmethod.
 
 endclass.
@@ -68,7 +74,35 @@ class lcx_text implementation.
 
     super->constructor(
       previous = previous
+      data = message
     ).
 
+  endmethod.
+endclass.
+
+class lcl_rtts definition abstract.
+  public section.
+
+    class-methods applies_to_csequence
+    importing data type any
+    returning value(result) type abap_bool.
+
+  private section.
+
+    class-methods get_csequence_type returning value(result) type ref to cl_abap_elemdescr.
+endclass.
+
+class lcl_rtts implementation.
+  method get_csequence_type.
+    statics csequence_type type ref to cl_abap_elemdescr.
+    if csequence_type is not bound.
+*      csequence_type = cast #(  cl_abap_typedescr=>describe_by_data( csequence ) ).
+      csequence_type = cast #(  cl_abap_typedescr=>describe_by_name( 'CSEQUENCE' ) ).
+    endif.
+    result = csequence_type.
+  endmethod.
+
+  method applies_to_csequence.
+    result = get_csequence_type( )->applies_to_data( p_data = data ).
   endmethod.
 endclass.

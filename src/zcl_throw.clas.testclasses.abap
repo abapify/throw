@@ -18,7 +18,7 @@ endclass.
 class ltcl_throw implementation.
 
   method zif_throw~throw.
-    new zcl_throw( )->throw( message ).
+    new zcl_throw( )->throw( object ).
   endmethod.
 
   method cx_sy.
@@ -48,4 +48,20 @@ class ltcl_throw implementation.
 
   endmethod.
 
+endclass.
+
+class ltcl_rtts definition final for testing inheriting from zcl_assertable_unit
+  duration short
+  risk level harmless.
+  public section.
+  methods csequence for testing.
+endclass.
+
+class ltcl_rtts implementation.
+method csequence.
+
+  assert( lcl_rtts=>applies_to_csequence( 'Char' ) )->true(  ).
+  assert( lcl_rtts=>applies_to_csequence( |String| ) )->true(  ).
+
+endmethod.
 endclass.
