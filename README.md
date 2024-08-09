@@ -1,5 +1,5 @@
-# Throw an exception
-Throw an exception in a minimalistic way
+# Throw anything as exception
+Throw any object as exception in a minimalistic way. The prototype for this class is native javascript [throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw).
 
 Here is the idea
 
@@ -31,7 +31,7 @@ class zcl_your_class definition.
 endclass.
 class zcl_your_class implementation.
   method zif_throw~throw.
-    new zcl_throw( )->throw( message ).
+    zcl_throw=>from( object ).
   endmethod.
   method do_something.
     if something_bad_happened( ).
