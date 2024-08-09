@@ -16,9 +16,35 @@ throw( ).
 In both cases we expect a static exception should be raised with a text message from a given text or just inherited from a system message.
 That's it.
 
-## Implementation
+## Usage
 
-It will be delivered as the interface `ZIF_THROW` which you can implement in your class or the class `ZCL_THROW` which you can inherit from.
+### Via static method
+
+```abap
+zcl_throw=>from( 'Error happenned' ).
+```
+or 
+```abap
+message e001(zmy_message_class) with 'this` 'and' 'that' into data(lv_dummy).
+zcl_throw=>from( ).
+```
+
+### Via instance 
+
+Not sure if we even need this way, may be for extensions with inherited classes
+
+```abap
+new zcl_throw( )->throw( 'Error happenned' ).
+```
+or 
+```abap
+message e001(zmy_message_class) with 'this` 'and' 'that' into data(lv_dummy).
+new zcl_throw( )->throw( ).
+```
+
+### Via interface 
+
+You can also implement `ZIF_THROW` interface in your class or just inherit from `ZCL_THROW` class
 
 In short here is the pattern how you can use it:
 ```abap
